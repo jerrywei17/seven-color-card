@@ -1,6 +1,2 @@
-# webpack-bootstrap-generator
-用來初始化一個搭配使用bootstrap的專案
-```
-npm instal
-webpack
-```
+# 七色卡
+來源參考：https://gist.github.com/airen/f055f8497c8c51067f1f
