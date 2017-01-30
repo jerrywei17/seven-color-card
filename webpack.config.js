@@ -2,12 +2,15 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     //app: ['webpack/hot/dev-server', './src/js/index.js'],
-    entry: './src/js/index.js',
+    entry: {
+        index1: './src/js/index1.js',
+        index2: './src/js/index2.js'
+    },
     vendor: ["jquery", "bootstrap"],
     output: {
-        path: './dist/js',
-        filename: 'bundle.js',
-        publicPath: '/assets/'
+        path: './dist/public',
+        filename: '/js/[name].js',
+        publicPath: './dist/public'
     },
     devServer: {
         inline: true,
@@ -43,7 +46,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js"),
+        new webpack.optimize.CommonsChunkPlugin("vendor", "/js/vendor.bundle.js"),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",
@@ -51,6 +54,6 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(), //开启热替换插件
         new webpack.NoErrorsPlugin(),
-        new ExtractTextPlugin("[name].css")
+        new ExtractTextPlugin("styles/[name].css")
     ]
 }
